@@ -4,6 +4,6 @@
   password here. Leave empty to show the curated offline snapshot.
 */
 window.BIOSECURITY_CONFIG = {
-  supabaseUrl: "",
-  supabasePublishableKey: ""
+  supabaseUrl: "https://rsbglbqdocrhalihkift.supabase.co",
+  supabasePublishableKey: "sb_publishable_t6Ahhn4DS6y06sfh0_W9WQ_Lzsb1l2_"
 };

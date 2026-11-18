@@ -26,8 +26,10 @@
   const statusLabel = (status) => status === 'independently-evaluated' ? 'Independent evaluation documented' : status === 'unclear' ? 'Evidence unclear' : 'Publicly reported';
 
   function fillOptions(select, labels) {
+    const previous = select.value;
     while (select.options.length > 1) select.remove(1);
     labels.forEach((label) => select.add(new Option(label, label)));
+    if (labels.includes(previous)) select.value = previous;
   }
   function renderSummary() {
     const records = state.records;
@@ -211,12 +213,34 @@
     anchor.click();
     setTimeout(() => URL.revokeObjectURL(url), 1000);
   });
-  async function init() {
-    const result = await window.BIOSECURITY_DATABASE.loadPublishedRecords();
+  let lastPayload;
+  function applyRecords(result) {
+    const payload = JSON.stringify(result);
+    if (payload === lastPayload) return;
+    lastPayload = payload;
+    const active = state.activeRecord;
+    const previousSignal = active?.safeguards[state.activeSignal];
     state.records = (result.records || []).map(core.normalizeRecord).filter(Boolean);
     els.dataSource.textContent = result.message + (result.mode === 'snapshot' ? ' · ' + state.records.length + ' historical records; verify sources before reuse' : '');
     renderSummary();
     render();
+    if (els.dialog.open && active) {
+      state.activeRecord = state.records.find((record) => record.id === active.id);
+      if (!state.activeRecord) {
+        els.dialog.close();
+        return;
+      }
+      const index = state.activeRecord.safeguards.findIndex((signal) => (
+        signal.label === previousSignal?.label && signal.sourceId === previousSignal?.sourceId
+      ));
+      state.activeSignal = Math.max(0, index);
+      renderDetails();
+    }
+  }
+  async function init() {
+    const database = window.BIOSECURITY_DATABASE;
+    applyRecords(await database.loadPublishedRecords());
+    database.watchPublishedRecords(applyRecords);
   }
   init().catch((error) => {
     console.error('Biosecurity Signals initialization failed:', error);

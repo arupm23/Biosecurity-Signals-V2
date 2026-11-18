@@ -2,10 +2,10 @@
 
 An independent, source-linked public research tool for exploring statements about biosecurity safeguards in AI-enabled biology. **The site does not verify that a tool is safe.** It distinguishes what a source reports from what independent evaluation documents, with explicit evidence limitations.
 
-**Original v0.1 site:** https://arupm23.github.io/biosecurity-signals/  
-**Original v0.1 repository:** https://github.com/arupm23/biosecurity-signals  
-**Intended independent v2 repository:** `arupm23/biosecurity-signals-v2` (create before publishing)  
-**v2 deployment status:** not yet deployed; database connection requires your own Supabase project
+- [Original v0.1 site](https://arupm23.github.io/biosecurity-signals/)
+- [Original v0.1 repository](https://github.com/arupm23/biosecurity-signals)
+- [V2 repository](https://github.com/arupm23/Biosecurity-Signals-V2)
+- [V2 website](https://arupm23.github.io/Biosecurity-Signals-V2/)
 
 ## What's new in v2.0
 
@@ -43,9 +43,10 @@ Opening `index.html` directly also works for the curated snapshot. No package in
 1. Create a **new Supabase project** under your own account (do not put database passwords or service-role keys in GitHub).
 2. Open the Supabase SQL Editor, and run `supabase/001_evidence_observatory.sql` as the project administrator. PostgreSQL 15+ is required for `security_invoker` views.
 3. Run `supabase/002_seed.sql` to migrate the eight original source-linked records. This seed is intentionally insert-only; it does not overwrite existing edits. To regenerate it from the original data: `node scripts/generate-seed.mjs > supabase/002_seed.sql`.
-4. In `config.js`, set `supabaseUrl` to `https://YOUR-PROJECT.supabase.co` and `supabasePublishableKey` to your project's **public publishable** key (or legacy public anon key). These are browser-visible identifiers; RLS provides the access boundary. **Never** place a `service_role`, `sb_secret_…` key, database password, or personal token in any static file.
-5. Test the public read API and RLS before publishing. The site calls `/rest/v1/published_records` with an `apikey` header; only records with `status='published'` should be returned.
-6. Deploy the revised static files to GitHub Pages as before. An API outage reverts visibly to the eight-record curated snapshot. If the database is empty, it shows zero records rather than silently mislabeling the snapshot as live.
+4. Run `supabase/003_published_records_realtime.sql` and ensure Realtime is enabled in the project's Realtime settings. This adds a read-only revision counter to the Realtime publication. Open pages subscribe to the counter and fetch the current published records when it changes. A 30-second refresh in visible tabs covers missed notifications and unavailable sockets. The Supabase JavaScript client loads from jsDelivr when a project is configured.
+5. In `config.js`, set `supabaseUrl` to `https://YOUR-PROJECT.supabase.co` and `supabasePublishableKey` to your project's **public publishable** key (or legacy public anon key). These are browser-visible identifiers. RLS provides the access boundary. Keep service-role keys, secret keys, database passwords, and personal tokens out of static files.
+6. Test the public read API and RLS before publishing. The site calls `/rest/v1/published_records` with an `apikey` header. Check that it returns only published records. With the site open, edit a published record and confirm that the page updates without reloading.
+7. Deploy the revised static files to GitHub Pages. An API outage displays the eight-record curated snapshot. A successful API response with no records displays an empty database.
 
 **Important:** The SQL migration configures **read-only access** for anonymous and authenticated browser users. Research updates must be performed by authorized maintainers in the Supabase dashboard/SQL Editor, or via a separately authenticated server-side administrative workflow after security review. There is intentionally **no public write API or browser-based admin panel**. Add new sources and safeguard-to-source links before setting a record to `published`.
 
@@ -95,6 +96,6 @@ This project expands on the Biosecurity Statements Repository idea of Max Langen
 
 Website code: MIT (`LICENSE`). Curated original summaries and metadata: CC BY 4.0 (`DATA_LICENSE.md`). Third-party source materials retain their original rights. See `CONTRIBUTING.md` and `SECURITY.md` for review and disclosure practices.
 
-## Publishing this separate repository
+## GitHub Pages
 
-The project is packaged for GitHub but cannot create a remote GitHub repository without an account-authorized repository-creation action. See `INSTALL_TO_GITHUB.md`; with the GitHub CLI installed and authenticated, run `bash scripts/publish-to-github.sh` to create the new **public** `arupm23/biosecurity-signals-v2` repository and push all files. This changes neither the v0.1 repository nor its live website.
+Publish from the root of `main` in the V2 repository's GitHub Pages settings. The site uses plain HTML, CSS, and JavaScript and requires no build step. Supabase stores the statements and delivers revision notifications separately from static hosting.
