@@ -1,0 +1,185 @@
+[
+  {
+    "id": "alphafold-3",
+    "name": "AlphaFold 3",
+    "organization": "Google DeepMind & Isomorphic Labs",
+    "recordType": "Model",
+    "domain": "Biomolecular structure & interaction prediction",
+    "date": "2024-05",
+    "access": [
+      "Hosted service",
+      "Authentication",
+      "Open code/weights with terms"
+    ],
+    "actions": [
+      "Dual-use statement",
+      "Expert engagement",
+      "Risk evaluation",
+      "Access controls",
+      "Use policy",
+      "Monitoring"
+    ],
+    "evidence": "Developer statement",
+    "summary": "The developers describe a model-specific biosecurity assessment, consultation with more than 50 external experts, targeted server restrictions, internal review, and monitoring of adoption and impact.",
+    "caveat": "The public material describes process and rationale, but does not expose all evaluation methods or results. Access and viral-protein policies have also evolved over time.",
+    "sourceTitle": "Our approach to biosecurity for AlphaFold 3",
+    "sourceUrl": "https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/alphafold-3-predicts-the-structure-and-interactions-of-all-lifes-molecules/Our-approach-to-biosecurity-for-AlphaFold-3-08052024"
+  },
+  {
+    "id": "evo-2",
+    "name": "Evo 2",
+    "organization": "Arc Institute and collaborators",
+    "recordType": "Model",
+    "domain": "Genomic foundation model",
+    "date": "2026-03",
+    "access": [
+      "Open source",
+      "Open weights",
+      "Local execution"
+    ],
+    "actions": [
+      "Dual-use statement",
+      "Training-data curation",
+      "Expert engagement",
+      "Risk evaluation",
+      "Red teaming",
+      "Published results"
+    ],
+    "evidence": "Peer-reviewed paper",
+    "summary": "Evo 2 excludes genomic sequences from viruses that infect eukaryotic hosts, reports targeted red-team and performance evaluations, and explains the intended capability reduction before open release.",
+    "caveat": "The authors explicitly note that task-specific post-training could circumvent the mitigation and should be approached with caution.",
+    "sourceTitle": "Genome modelling and design across all domains of life with Evo 2",
+    "sourceUrl": "https://doi.org/10.1038/s41586-026-10176-5"
+  },
+  {
+    "id": "esm3-open",
+    "name": "ESM3-open",
+    "organization": "EvolutionaryScale / Biohub",
+    "recordType": "Model",
+    "domain": "Protein language model",
+    "date": "2024-07",
+    "access": [
+      "Open weights",
+      "Local execution"
+    ],
+    "actions": [
+      "Training-data curation",
+      "Model-card disclosure"
+    ],
+    "evidence": "Model card",
+    "summary": "The public model card states that virus-related data and selected proteins associated with organisms on the USDA Select Agents and Toxins list were removed from training.",
+    "caveat": "The model card reports the filtering choice but provides limited public detail on independent review, red-team methods, or ongoing monitoring.",
+    "sourceTitle": "ESM3-small-open-v1 model card",
+    "sourceUrl": "https://huggingface.co/biohub/esm3-sm-open-v1"
+  },
+  {
+    "id": "opencrispr-1",
+    "name": "OpenCRISPR-1",
+    "organization": "Profluent",
+    "recordType": "Tool",
+    "domain": "AI-designed gene editing system",
+    "date": "2024-04",
+    "access": [
+      "Public repository",
+      "Commercial license"
+    ],
+    "actions": [
+      "Ethical-use terms",
+      "Feedback channel",
+      "Public documentation"
+    ],
+    "evidence": "Developer documentation",
+    "summary": "Profluent released the system publicly and uses a lightweight commercial license with ethical-use obligations. Its documentation invites user feedback and describes an intent to support safe, ethical use.",
+    "caveat": "The public GitHub repository currently has no dedicated SECURITY.md, and the documentation does not report a formal biosecurity evaluation or red-team program.",
+    "sourceTitle": "OpenCRISPR repository and FAQ",
+    "sourceUrl": "https://github.com/Profluent-AI/OpenCRISPR/blob/main/README.md"
+  },
+  {
+    "id": "vpst",
+    "name": "vPST",
+    "organization": "Research collaboration",
+    "recordType": "Model",
+    "domain": "Viral protein foundation model",
+    "date": "2024-09",
+    "access": [
+      "Research release under review"
+    ],
+    "actions": [
+      "Dual-use statement",
+      "Training-data analysis",
+      "Expert engagement",
+      "Staged release"
+    ],
+    "evidence": "Research preprint",
+    "summary": "The authors assess the composition of training data, discuss why they judge the model’s risk to be comparatively low, and state that independent experts were considering impacts before code and weight release.",
+    "caveat": "The risk characterization is primarily author-reported and the source is a preprint version; release status and safeguards should be rechecked.",
+    "sourceTitle": "Protein Set Transformer: a protein-based genome language model",
+    "sourceUrl": "https://doi.org/10.21203/rs.3.rs-4844047/v1"
+  },
+  {
+    "id": "megasyn-dual-use",
+    "name": "MegaSyn dual-use case study",
+    "organization": "Collaborations Pharmaceuticals & partners",
+    "recordType": "Case study",
+    "domain": "AI-enabled small-molecule design",
+    "date": "2022-03",
+    "access": [
+      "Research disclosure"
+    ],
+    "actions": [
+      "Dual-use statement",
+      "Information-hazard review",
+      "Recommendations",
+      "Community engagement"
+    ],
+    "evidence": "Peer-reviewed commentary",
+    "summary": "Researchers documented how a therapeutic design workflow could be repurposed toward harmful objectives and used the case to call for stronger dual-use review, reporting norms, and cross-sector discussion.",
+    "caveat": "This is a disclosure and governance case study rather than a maintained access-control system or model-release policy.",
+    "sourceTitle": "Dual use of artificial-intelligence-powered drug discovery",
+    "sourceUrl": "https://doi.org/10.1038/s42256-022-00465-9"
+  },
+  {
+    "id": "nist-built-in-safeguards",
+    "name": "Built-in safeguards for generative AI",
+    "organization": "NIST-affiliated research collaboration",
+    "recordType": "Guidance",
+    "domain": "Generative AI for biotechnology",
+    "date": "2025-04",
+    "access": [
+      "Public guidance"
+    ],
+    "actions": [
+      "Recommendations",
+      "Technical safeguards",
+      "Governance",
+      "Community engagement"
+    ],
+    "evidence": "Peer-reviewed correspondence",
+    "summary": "The authors call for AI-native safeguards—including watermarking, alignment, anti-jailbreak techniques, and unlearning—to complement governance and coordinated testing.",
+    "caveat": "This is forward-looking guidance. It does not certify that the proposed techniques are mature or effective for every biological model.",
+    "sourceTitle": "A call for built-in biosecurity safeguards for generative AI tools",
+    "sourceUrl": "https://www.nist.gov/publications/call-built-biosecurity-safeguards-generative-ai-tools"
+  },
+  {
+    "id": "who-lab-biosecurity",
+    "name": "Laboratory biosecurity guidance",
+    "organization": "World Health Organization",
+    "recordType": "Guidance",
+    "domain": "Biological risk management",
+    "date": "2024-06",
+    "access": [
+      "Public guidance"
+    ],
+    "actions": [
+      "Risk assessment",
+      "Governance",
+      "Information security",
+      "Institutional oversight"
+    ],
+    "evidence": "Normative guidance",
+    "summary": "WHO provides a consequence-driven framework spanning material, technology, and information risks, including emerging concerns from AI and molecular techniques.",
+    "caveat": "The guidance is broader than AI-biology model release and requires context-specific implementation rather than checklist compliance.",
+    "sourceTitle": "WHO Laboratory biosecurity guidance",
+    "sourceUrl": "https://www.who.int/publications/i/item/9789240095113"
+  }
+]

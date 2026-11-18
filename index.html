@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="An evidence-based observatory of publicly reported safeguards in AI-enabled biology tools.">
+  <title>Biosecurity Signals · Evidence Observatory v2</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#repository">Skip to repository</a>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Biosecurity Signals home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>Biosecurity Signals</span></a>
+    <nav aria-label="Primary navigation"><a href="#repository">Repository</a><a href="#patterns">Safeguard layers</a><a href="#method">Method</a></nav>
+    <button class="button button-small button-ghost" id="downloadJson" type="button">Export JSON</button>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow">Public-source evidence observatory · v2.0</p>
+        <h1 id="hero-title">What evidence supports AI-biology safeguards?</h1>
+        <p class="lede">Explore developer statements, evaluation practices, release choices, and governance guidance, with each reported safeguard traceable to its source.</p>
+        <div class="hero-actions"><a class="button button-primary" href="#repository">Explore the evidence</a><a class="text-link" href="#patterns">Explore safeguard layers ↘</a></div>
+        <p id="dataSourceStatus" class="data-status" role="status" aria-live="polite">Loading public research records…</p>
+      </div>
+      <aside class="hero-panel" aria-label="Repository summary">
+        <div class="signal-orbit" aria-hidden="true"><span class="orbit orbit-a"></span><span class="orbit orbit-b"></span><span class="orbit orbit-c"></span><span class="orbit-center"></span></div>
+        <dl class="summary-grid">
+          <div><dt id="entryCount">—</dt><dd>published records</dd></div>
+          <div><dt id="orgCount">—</dt><dd>organizations</dd></div>
+          <div><dt id="actionCount">—</dt><dd>safeguard types</dd></div>
+          <div><dt id="sourceCount">—</dt><dd>linked sources</dd></div>
+        </dl>
+      </aside>
+    </section>
+
+    <section class="principles" aria-label="Repository principles">
+      <p><strong>Source-linked</strong><span>Every reported signal has a public primary source.</span></p>
+      <p><strong>Layered view</strong><span>Explore development, evaluation, release, and governance.</span></p>
+      <p><strong>Honest uncertainty</strong><span>Disclosure isn't proof; not reported isn't absent.</span></p>
+    </section>
+
+    <section class="repository-section" id="repository" aria-labelledby="repository-title">
+      <div class="section-heading"><div><p class="eyebrow">Research repository</p><h2 id="repository-title">Public biosecurity signals</h2></div><p class="section-note"><span id="resultCount">0</span> records shown · <span id="reviewSummary">Source-linked research</span></p></div>
+      <div class="filter-bar" aria-label="Repository filters">
+        <label class="search-field"><span class="visually-hidden">Search records</span><span aria-hidden="true">⌕</span><input id="searchInput" type="search" placeholder="Search models, sources, safeguards…" autocomplete="off"></label>
+        <label><span class="visually-hidden">Filter by record type</span><select id="typeFilter"><option value="all">All record types</option></select></label>
+        <label><span class="visually-hidden">Filter by safeguard</span><select id="actionFilter"><option value="all">All safeguards</option></select></label>
+        <label><span class="visually-hidden">Filter by publication year</span><select id="periodFilter"><option value="all">All years</option></select></label>
+        <button class="button button-small button-ghost" id="resetFilters" type="button">Reset</button>
+      </div>
+      <div class="active-filter" id="activeFilter" role="status" aria-live="polite">Showing all records</div>
+      <div class="card-grid" id="recordGrid"></div>
+      <div class="empty-state" id="emptyState" hidden><p>No records match these filters.</p><button class="text-link button-link" id="emptyReset" type="button">Clear filters</button></div>
+    </section>
+
+    <section class="patterns-section" id="patterns" aria-labelledby="patterns-title">
+      <div class="section-heading compact"><div><p class="eyebrow">Interactive evidence patterns</p><h2 id="patterns-title">Safeguards appear in layers</h2></div><p class="section-note">Click any layer or safeguard to inspect its evidence</p></div>
+      <p class="patterns-intro">Counts reflect records tagged with a publicly reported safeguard—not implementation quality, effectiveness, or safety maturity. Repository filters update this visualization.</p>
+      <div class="pattern-layout">
+        <div class="layer-list" id="layerStack" role="group" aria-label="Safeguard lifecycle layers"></div>
+        <section class="layer-detail" id="layerDetails" aria-label="Selected safeguard layer" aria-live="polite"></section>
+      </div>
+    </section>
+
+    <section class="method-section" id="method" aria-labelledby="method-title">
+      <div><p class="eyebrow">Method & scope</p><h2 id="method-title">Trace claims back to evidence</h2></div>
+      <div class="method-copy">
+        <p>Biosecurity Signals organizes statements from model cards, research papers, developer documentation, and institutional guidance. These are public claims and documented evaluations, not independent safety certifications.</p>
+        <ol>
+          <li><span>01</span><div><strong>Identify a primary source</strong><p>Preserve the source URL, title, publication period and evidence type for every record.</p></div></li>
+          <li><span>02</span><div><strong>Classify each safeguard</strong><p>Link individual reported practices to one of four lifecycle layers and their supporting source.</p></div></li>
+          <li><span>03</span><div><strong>Preserve limitations and review history</strong><p>Keep explicit caveats, distinguish independent evaluation from developer disclosure, and document changes.</p></div></li>
+        </ol>
+        <div class="notice"><strong>Interpretation matters:</strong> “Not reported” does not mean “not implemented.” An independent evaluation being documented is not proof that a tool is safe. Guidance and case studies describe recommendations or findings, not necessarily operational safeguards. This repository contains no biological sequences, protocols, or circumvention instructions.</div>
+        <p class="independence-note">Independent research project. No affiliation with, or endorsement by, the organizations whose public materials are cited.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer><div><strong>Biosecurity Signals</strong><p>v2.0 · Public-source research aid</p></div><div class="footer-meta"><p>Inspired by work by Max Langenkamp, Tessa Alexanian, Shiying He, and P.T. Nhean.</p><p><a href="ATTRIBUTION.md">Attribution</a> · <a href="LICENSE">MIT code license</a> · <a href="DATA_LICENSE.md">CC BY 4.0 data</a></p></div></footer>
+  <dialog id="detailDialog" aria-labelledby="dialogTitle"><button class="dialog-close" id="closeDialog" type="button" aria-label="Close details">×</button><div id="dialogContent"></div></dialog>
+  <script src="config.js"></script>
+  <script src="taxonomy.js"></script>
+  <script src="data.js"></script>
+  <script src="app-core.js"></script>
+  <script src="database.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

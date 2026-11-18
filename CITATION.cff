@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "If you use Biosecurity Signals, please cite the software and the primary sources for any records you reference."
+title: "Biosecurity Signals"
+type: software
+version: 2.0.0-dev
+authors:
+  - family-names: "Mohanty"
+    given-names: "Arup"
+license: MIT
+abstract: "An independent source-linked research observatory for publicly reported safeguards and evidence limitations in AI-enabled biology."
+keywords:
+  - biosecurity
+  - responsible AI
+  - biological design tools
+  - dual use
+  - research transparency

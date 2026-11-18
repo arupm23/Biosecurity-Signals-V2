@@ -1,0 +1,29 @@
+name: Code and data checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check script syntax
+        run: npm run check
+      - name: Test data, filters, and source safety
+        run: npm test
+      - name: Validate seed generation is deterministic
+        run: |
+          node scripts/generate-seed.mjs > /tmp/seed.sql
+          diff -u supabase/002_seed.sql /tmp/seed.sql

@@ -1,0 +1,14 @@
+{
+  "name": "biosecurity-signals-v2",
+  "private": true,
+  "version": "2.0.0",
+  "description": "Public-source biosecurity evidence observatory with layered safeguard visualizations",
+  "scripts": {
+    "test": "node tests/legacy-preservation.mjs && node tests/smoke.mjs",
+    "check": "node --check app.js && node --check app-core.js && node --check database.js && node --check taxonomy.js && node --check data.js && node --check config.js && node --check scripts/generate-seed.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT"
+}

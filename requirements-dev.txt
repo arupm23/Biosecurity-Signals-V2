@@ -1,0 +1,2 @@
+# Optional Python browser smoke test (does not run the public website)
+playwright>=1.50,<2
